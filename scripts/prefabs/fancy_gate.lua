@@ -478,7 +478,7 @@ local function MakeWall(name, builds, isdoor, keyid)
 
         inst.Transform:SetEightFaced()
 
-        MakeObstaclePhysics(inst, .5)
+        MakeObstaclePhysics(inst, 0)
         inst.Physics:SetDontRemoveOnSleep(true)
 
         inst:AddTag("wall")
@@ -726,5 +726,10 @@ local function MakeWallPlacer(placer, placement, builds, isdoor)
         end)
 end
 
-return MakeWall("fancy_fence_gate_door", {wide = "quagmire_park_gate"}, true, "park_key"),
-	MakeWallAnim("fancy_fence_gate_door_anim", {wide = "quagmire_park_gate"}, true)
+return 
+    --
+
+    MakeWall("fancy_fence_gate_door", {wide="quagmire_park_gate", narrow="quagmire_park_gate"}, true, "park_key"),
+    MakeWallAnim("fancy_fence_gate_door_anim", {wide="quagmire_park_gate", narrow="quagmire_park_gate"}, true),
+    MakeInvItem("fancy_fence_gate_door_item", "dyc_park_gate_inv", "dyc_park_gate_inv", true),
+    MakeWallPlacer("fancy_fence_gate_door_placer", "fancy_fence_gate_door", {wide="quagmire_park_gate", narrow="quagmire_park_gate"}, true)
